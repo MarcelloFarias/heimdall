@@ -5,6 +5,7 @@ const theme: any = {
   danger: "#DC4C64",
   info: "#54B4D3",
   light: "#fbfbfb",
+  dark: "#332d2d",
 };
 
 export default theme;

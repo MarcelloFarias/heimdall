@@ -1,11 +1,16 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
-import ActionSheet from "react-native-actions-sheet";
+import { Text, Image, View } from "react-native";
+import ActionSheet, { SheetManager } from "react-native-actions-sheet";
 const onBoardImage = require("../../../../assets/onBoarding.png");
+import Button from "../../Button/button";
 import theme from "../../../../Theme";
 
 function OnBoarding() {
   return (
-    <ActionSheet containerStyle={{ height: 500, padding: 8 }}>
+    <ActionSheet
+      containerStyle={{ height: 500, padding: 8 }}
+      closeOnTouchBackdrop={false}
+      closeOnPressBack={false}
+    >
       <View
         style={{
           display: "flex",
@@ -14,29 +19,22 @@ function OnBoarding() {
           marginTop: 20,
         }}
       >
-        <Text style={{ fontSize: 20 }}>Boas vindas ao Heimdall !</Text>
-        <Text style={{ fontSize: 16, marginTop: 5 }}>
+        <Text style={{ fontSize: 20, color: theme.dark }}>
+          Boas vindas ao Heimdall !
+        </Text>
+        <Text style={{ fontSize: 16, marginTop: 5, color: theme.secondary }}>
           O melhor lugar para guardar suas senhas.
         </Text>
         <Image
           source={onBoardImage}
           style={{ maxHeight: 300, maxWidth: 300 }}
         />
-        <TouchableOpacity
-          style={{
-            backgroundColor: theme.primary,
-            padding: 4,
-            width: 250,
-            borderRadius: 4,
-            height: 42,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+        <Button
+          onPress={() => {
+            SheetManager.show("OnBoardingSecurity-sheet");
           }}
-          onPress={() => {}}
-        >
-          <Text style={{ fontSize: 18, color: theme.light }}>Vamos nessa</Text>
-        </TouchableOpacity>
+          text="Prosseguir"
+        />
       </View>
     </ActionSheet>
   );
