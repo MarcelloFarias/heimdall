@@ -3,6 +3,7 @@ import ActionSheet, { SheetManager } from "react-native-actions-sheet";
 const securityImage = require("../../../../assets/security.png");
 import Button from "../../Button/button";
 import theme from "../../../../Theme";
+import * as SecureStore from "expo-secure-store";
 
 function OnBoardingSecurity() {
   return (

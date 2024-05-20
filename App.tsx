@@ -1,12 +1,11 @@
 import { useEffect } from "react";
-import { SafeAreaView, useWindowDimensions } from "react-native";
+import { SafeAreaView } from "react-native";
 import { SheetManager, SheetProvider } from "react-native-actions-sheet";
 import "./src/components/Sheets/sheets";
 import Header from "./src/components/Header/header";
+import RegisterButton from "./src/components/RegisterButton/registerButton";
 
 function App() {
-  const { width, height } = useWindowDimensions();
-
   useEffect(() => {
     SheetManager.show("OnBoarding-sheet");
   }, []);
@@ -15,6 +14,7 @@ function App() {
     <SheetProvider>
       <SafeAreaView style={{ flex: 1 }}>
         <Header />
+        <RegisterButton />
       </SafeAreaView>
     </SheetProvider>
   );
