@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { SafeAreaView, useWindowDimensions } from "react-native";
 import { SheetManager, SheetProvider } from "react-native-actions-sheet";
 import "./src/components/Sheets/sheets";
+import Header from "./src/components/Header/header";
 
 function App() {
   const { width, height } = useWindowDimensions();
@@ -12,7 +13,9 @@ function App() {
 
   return (
     <SheetProvider>
-      <SafeAreaView style={{ height: height }}></SafeAreaView>
+      <SafeAreaView style={{ flex: 1 }}>
+        <Header />
+      </SafeAreaView>
     </SheetProvider>
   );
 }

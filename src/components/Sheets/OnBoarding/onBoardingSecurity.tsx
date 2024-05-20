@@ -1,5 +1,5 @@
 import { Text, Image, View } from "react-native";
-import ActionSheet from "react-native-actions-sheet";
+import ActionSheet, { SheetManager } from "react-native-actions-sheet";
 const securityImage = require("../../../../assets/security.png");
 import Button from "../../Button/button";
 import theme from "../../../../Theme";
@@ -36,7 +36,10 @@ function OnBoardingSecurity() {
         />
         <Button
           text="Vamos nessa"
-          onPress={() => {}}
+          onPress={() => {
+            SheetManager.hide("OnBoarding-sheet");
+            SheetManager.hide("OnBoardingSecurity-sheet");
+          }}
           style={{ marginTop: 10 }}
         />
       </View>

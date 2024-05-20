@@ -4,5 +4,3 @@ import OnBoardingSecurity from "./OnBoarding/onBoardingSecurity";
 
 registerSheet("OnBoarding-sheet", OnBoarding);
 registerSheet("OnBoardingSecurity-sheet", OnBoardingSecurity);
-
-export {};
