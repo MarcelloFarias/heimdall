@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Text, View } from "react-native";
 import ActionSheet, { SheetManager } from "react-native-actions-sheet";
 import theme from "../../../../Theme";
@@ -7,6 +7,7 @@ import Button from "../../Button/button";
 import { AntDesign } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Toast from "react-native-toast-message";
 
 function RegisterPasswordSheet() {
   const [password, setPassword] = useState<{
@@ -19,10 +20,6 @@ function RegisterPasswordSheet() {
     passwordUser: "",
   });
 
-  useEffect(() => {
-    console.log(password);
-  }, [password]);
-
   async function savePassword() {
     if (password.passwordName && password.passwordValue) {
       try {
@@ -34,11 +31,33 @@ function RegisterPasswordSheet() {
           })
         );
 
-        console.log(`${password.passwordName} registrada !`);
+        SheetManager.hide("RegisterPassword-sheet");
+
+        Toast.show({
+          type: "success",
+          text1: `${password.passwordName} registrada com sucesso !`,
+          text2: "Você pode visualizá-la agora na sua lista",
+        });
+
+        setPassword({
+          passwordName: "",
+          passwordValue: "",
+          passwordUser: "",
+        });
+
+        return;
       } catch (error) {
         console.log(error);
       }
     }
+
+    SheetManager.hide("RegisterPassword-sheet");
+
+    return Toast.show({
+      type: "error",
+      text1: "Não foi possível registrar a senha",
+      text2: "Por favor, preencha os campos obrigatórios",
+    });
   }
 
   return (
