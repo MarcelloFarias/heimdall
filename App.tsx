@@ -1,11 +1,11 @@
 import { useEffect } from "react";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, View, Text } from "react-native";
 import { SheetManager, SheetProvider } from "react-native-actions-sheet";
 import "./src/components/Sheets/sheets";
-import Header from "./src/components/Header/header";
 import FloatButton from "./src/components/FloatButton/floatButton";
 import { AntDesign } from "@expo/vector-icons";
 import theme from "./Theme";
+import Header from "./src/components/Header/header";
 
 function App() {
   useEffect(() => {
