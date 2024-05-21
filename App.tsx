@@ -3,7 +3,9 @@ import { SafeAreaView } from "react-native";
 import { SheetManager, SheetProvider } from "react-native-actions-sheet";
 import "./src/components/Sheets/sheets";
 import Header from "./src/components/Header/header";
-import RegisterButton from "./src/components/RegisterButton/registerButton";
+import FloatButton from "./src/components/FloatButton/floatButton";
+import { AntDesign } from "@expo/vector-icons";
+import theme from "./Theme";
 
 function App() {
   useEffect(() => {
@@ -14,7 +16,11 @@ function App() {
     <SheetProvider>
       <SafeAreaView style={{ flex: 1 }}>
         <Header />
-        <RegisterButton />
+        <FloatButton
+          onPress={() => SheetManager.show("RegisterPassword-sheet")}
+        >
+          <AntDesign name="pluscircle" size={58} color={theme.primary} />
+        </FloatButton>
       </SafeAreaView>
     </SheetProvider>
   );

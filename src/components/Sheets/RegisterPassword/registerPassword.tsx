@@ -1,4 +1,4 @@
-import { Text, ScrollView } from "react-native";
+import { Text, View } from "react-native";
 import ActionSheet from "react-native-actions-sheet";
 import theme from "../../../../Theme";
 import Input from "../../Input/input";
@@ -11,9 +11,10 @@ function RegisterPasswordSheet() {
       closeOnPressBack={true}
       closeOnTouchBackdrop={true}
       containerStyle={{ height: 500 }}
+      headerAlwaysVisible={true}
     >
-      <ScrollView
-        contentContainerStyle={{
+      <View
+        style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -43,7 +44,7 @@ function RegisterPasswordSheet() {
         />
 
         <Button text="Salvar" onPress={() => {}} style={{ marginTop: 20 }} />
-      </ScrollView>
+      </View>
     </ActionSheet>
   );
 }

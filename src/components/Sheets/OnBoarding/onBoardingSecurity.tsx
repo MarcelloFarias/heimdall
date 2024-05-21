@@ -3,11 +3,14 @@ import ActionSheet, { SheetManager } from "react-native-actions-sheet";
 const securityImage = require("../../../../assets/security.png");
 import Button from "../../Button/button";
 import theme from "../../../../Theme";
-import * as SecureStore from "expo-secure-store";
 
 function OnBoardingSecurity() {
   return (
-    <ActionSheet containerStyle={{ height: 500, padding: 8 }}>
+    <ActionSheet
+      containerStyle={{ height: 500, padding: 8 }}
+      closeOnPressBack={false}
+      closeOnTouchBackdrop={false}
+    >
       <View
         style={{
           display: "flex",
