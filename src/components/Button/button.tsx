@@ -5,6 +5,7 @@ interface ButtonProps {
   text: string;
   onPress: any;
   style?: any;
+  bg?: string;
 }
 
 function Button(props: ButtonProps) {
@@ -14,9 +15,10 @@ function Button(props: ButtonProps) {
     display: props?.style?.display || "flex",
     alignItems: props?.style?.alignItems || "center",
     justifyContent: props?.style?.justifyContent || "center",
-    backgroundColor: props?.style?.backgroundColor || theme.primary,
+    backgroundColor:
+      props?.style?.backgroundColor || props?.bg || theme.primary,
     height: props?.style?.height || 42,
-    borderRadius: props?.style?.borderRadius || 4
+    borderRadius: props?.style?.borderRadius || 4,
   });
 
   return (
