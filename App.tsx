@@ -1,30 +1,21 @@
-import { useEffect } from "react";
-import { SafeAreaView } from "react-native";
-import { SheetManager, SheetProvider } from "react-native-actions-sheet";
-import "./src/components/Sheets/sheets";
-import FloatButton from "./src/components/FloatButton/floatButton";
-import { AntDesign } from "@expo/vector-icons";
-import theme from "./Theme";
-import Header from "./src/components/Header/header";
-import Toast from "react-native-toast-message";
+import HomeScreen from "./src/screens/Home/home";
+import RegisterPasswordScreen from "./src/screens/RegisterPassword/registerPassword";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+const Stack = createNativeStackNavigator();
 
 function App() {
-  useEffect(() => {
-    SheetManager.show("OnBoarding-sheet");
-  }, []);
-
   return (
-    <SheetProvider>
-      <SafeAreaView style={{ flex: 1 }}>
-        <Header />
-        <FloatButton
-          onPress={() => SheetManager.show("RegisterPassword-sheet")}
-        >
-          <AntDesign name="pluscircle" size={58} color={theme.primary} />
-        </FloatButton>
-        <Toast />
-      </SafeAreaView>
-    </SheetProvider>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen}></Stack.Screen>
+        <Stack.Screen
+          name="RegisterPassword"
+          component={RegisterPasswordScreen}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 

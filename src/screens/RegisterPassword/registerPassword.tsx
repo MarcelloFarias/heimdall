@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { Text, View } from "react-native";
-import ActionSheet, { SheetManager } from "react-native-actions-sheet";
-import theme from "../../../../Theme";
-import Input from "../../Input/input";
-import Button from "../../Button/button";
+import { SafeAreaView, Text, View, TouchableOpacity } from "react-native";
+import theme from "../../../Theme";
+import Input from "../../components/Input/input";
+import Button from "../../components/Button/button";
 import { AntDesign } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Toast from "react-native-toast-message";
 
-function RegisterPasswordSheet() {
+function RegisterPasswordScreen({ navigation, route }: any) {
+  const { setPasswords } = route.params;
+
   const [password, setPassword] = useState<{
     passwordName: string;
     passwordValue: string;
@@ -32,21 +32,26 @@ function RegisterPasswordSheet() {
           })
         );
 
-        SheetManager.hide("RegisterPassword-sheet");
-
         Toast.show({
           type: "success",
           text1: `${password.passwordName} registrada com sucesso !`,
           text2: "Você pode visualizá-la agora na sua lista",
         });
 
+        const newPassword = await AsyncStorage.getItem(password.passwordName);
+
+        if (newPassword !== null) {
+          setPasswords((prevPasswords: any) => [
+            ...prevPasswords,
+            JSON.parse(newPassword),
+          ]);
+        }
+
         return;
       } catch (error) {
         console.log(error);
       }
     }
-
-    SheetManager.hide("RegisterPassword-sheet");
 
     return Toast.show({
       type: "error",
@@ -56,12 +61,7 @@ function RegisterPasswordSheet() {
   }
 
   return (
-    <ActionSheet
-      closeOnPressBack={true}
-      closeOnTouchBackdrop={true}
-      containerStyle={{ height: 500 }}
-      headerAlwaysVisible={true}
-    >
+    <SafeAreaView style={{ flex: 1 }}>
       <View
         style={{
           display: "flex",
@@ -109,19 +109,22 @@ function RegisterPasswordSheet() {
 
         <Button
           text="Salvar"
-          onPress={() => savePassword()}
+          onPress={() => {
+            savePassword();
+          }}
           style={{ marginTop: 20 }}
         />
 
         <TouchableOpacity
           style={{ marginTop: 20 }}
-          onPress={() => SheetManager.hide("RegisterPassword-sheet")}
+          onPress={() => navigation.navigate("Home")}
         >
-          <Text style={{ color: theme.danger, fontSize: 18 }}>Cancelar</Text>
+          <Text style={{ color: theme.secondary, fontSize: 18 }}>Voltar</Text>
         </TouchableOpacity>
       </View>
-    </ActionSheet>
+      <Toast />
+    </SafeAreaView>
   );
 }
 
-export default RegisterPasswordSheet;
+export default RegisterPasswordScreen;
