@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Text, View } from "react-native";
-import ActionSheet, { SheetManager } from "react-native-actions-sheet";
+import ActionSheet, {
+  SheetManager,
+  SheetProps,
+} from "react-native-actions-sheet";
 import theme from "../../../../Theme";
 import Input from "../../Input/input";
 import Button from "../../Button/button";
@@ -9,7 +12,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Toast from "react-native-toast-message";
 
-function RegisterPasswordSheet() {
+function RegisterPasswordSheet(props: SheetProps<"RegisterPassword-sheet">) {
   const [password, setPassword] = useState<{
     passwordName: string;
     passwordValue: string;
@@ -33,6 +36,15 @@ function RegisterPasswordSheet() {
         );
 
         SheetManager.hide("RegisterPassword-sheet");
+
+        const newPassword = await AsyncStorage.getItem(password.passwordName);
+
+        if (newPassword !== null) {
+          props?.payload?.setPasswords((prevPasswords: any) => [
+            ...prevPasswords,
+            JSON.parse(newPassword),
+          ]);
+        }
 
         Toast.show({
           type: "success",
@@ -117,7 +129,7 @@ function RegisterPasswordSheet() {
           style={{ marginTop: 20 }}
           onPress={() => SheetManager.hide("RegisterPassword-sheet")}
         >
-          <Text style={{ color: theme.danger, fontSize: 18 }}>Cancelar</Text>
+          <Text style={{ color: theme.secondary, fontSize: 16 }}>Cancelar</Text>
         </TouchableOpacity>
       </View>
     </ActionSheet>
