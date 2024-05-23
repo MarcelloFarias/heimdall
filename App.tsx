@@ -9,6 +9,7 @@ import Header from "./src/components/Header/header";
 import PasswordsList from "./src/components/PasswordsList/passwordsList";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Toast from "react-native-toast-message";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 function App() {
   const [passwords, setPasswords] = useState<any[]>([]);
@@ -41,22 +42,24 @@ function App() {
   }, []);
 
   return (
-    <SheetProvider>
-      <SafeAreaView style={{ flex: 1 }}>
-        <Header />
-        <PasswordsList passwords={passwords} setPasswords={setPasswords} />
-        <FloatButton
-          onPress={() => {
-            SheetManager.show("RegisterPassword-sheet", {
-              payload: { setPasswords: setPasswords },
-            });
-          }}
-        >
-          <AntDesign name="pluscircle" size={58} color={theme.primary} />
-        </FloatButton>
-        <Toast />
-      </SafeAreaView>
-    </SheetProvider>
+    <GestureHandlerRootView>
+      <SheetProvider>
+        <SafeAreaView style={{ flex: 1 }}>
+          <Header />
+          <PasswordsList passwords={passwords} setPasswords={setPasswords} />
+          <FloatButton
+            onPress={() => {
+              SheetManager.show("RegisterPassword-sheet", {
+                payload: { setPasswords: setPasswords },
+              });
+            }}
+          >
+            <AntDesign name="pluscircle" size={58} color={theme.primary} />
+          </FloatButton>
+          <Toast />
+        </SafeAreaView>
+      </SheetProvider>
+    </GestureHandlerRootView>
   );
 }
 
