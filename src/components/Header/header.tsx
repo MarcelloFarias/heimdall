@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Platform } from "react-native";
+import { View, Text, Pressable, Platform } from "react-native";
 import theme from "../../../Theme";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -15,9 +15,9 @@ function Header() {
       }}
     >
       <Text style={{ fontSize: 28, color: theme.dark }}>Minhas Senhas</Text>
-      <TouchableOpacity onPress={() => {}}>
+      <Pressable onPress={() => {}}>
         <Ionicons name="settings-sharp" size={28} color={theme.dark} />
-      </TouchableOpacity>
+      </Pressable>
     </View>
   );
 }

@@ -1,4 +1,4 @@
-import { TouchableOpacity } from "react-native";
+import { Pressable } from "react-native";
 import { ReactNode } from "react";
 
 interface FloatButtonProps {
@@ -9,7 +9,7 @@ interface FloatButtonProps {
 
 function FloatButton(props: FloatButtonProps) {
   return (
-    <TouchableOpacity
+    <Pressable
       style={{
         ...props?.style,
         position: "absolute",
@@ -19,7 +19,7 @@ function FloatButton(props: FloatButtonProps) {
       onPress={props?.onPress}
     >
       {props?.children}
-    </TouchableOpacity>
+    </Pressable>
   );
 }
 

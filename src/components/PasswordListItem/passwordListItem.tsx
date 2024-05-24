@@ -1,7 +1,7 @@
 import {
   View,
   Text,
-  TouchableOpacity,
+  Pressable,
   useWindowDimensions,
   Animated,
 } from "react-native";
@@ -40,7 +40,7 @@ function PasswordListItem(props: PasswordListItemProps) {
           { opacity },
         ]}
       >
-        <TouchableOpacity
+        <Pressable
           style={{
             height: "100%",
             width: "50%",
@@ -51,9 +51,9 @@ function PasswordListItem(props: PasswordListItemProps) {
           }}
         >
           <Feather name="edit" size={24} color={theme.light} />
-        </TouchableOpacity>
+        </Pressable>
 
-        <TouchableOpacity
+        <Pressable
           style={{
             height: "100%",
             width: "50%",
@@ -66,7 +66,7 @@ function PasswordListItem(props: PasswordListItemProps) {
           }}
         >
           <Feather name="trash-2" size={24} color={theme.light} />
-        </TouchableOpacity>
+        </Pressable>
       </Animated.View>
     );
   };

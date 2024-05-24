@@ -1,4 +1,4 @@
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { Pressable, Text, StyleSheet } from "react-native";
 import theme from "../../../Theme";
 
 interface ButtonProps {
@@ -22,9 +22,9 @@ function Button(props: ButtonProps) {
   });
 
   return (
-    <TouchableOpacity style={buttonStyle} onPress={props?.onPress}>
+    <Pressable style={buttonStyle} onPress={props?.onPress}>
       <Text style={{ fontSize: 18, color: theme.light }}>{props?.text}</Text>
-    </TouchableOpacity>
+    </Pressable>
   );
 }
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Text, View } from "react-native";
+import { Text, View, Pressable } from "react-native";
 import ActionSheet, {
   SheetManager,
   SheetProps,
@@ -8,7 +8,6 @@ import theme from "../../../../Theme";
 import Input from "../../Input/input";
 import Button from "../../Button/button";
 import { AntDesign } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Toast from "react-native-toast-message";
 
@@ -125,12 +124,12 @@ function RegisterPasswordSheet(props: SheetProps<"RegisterPassword-sheet">) {
           style={{ marginTop: 20 }}
         />
 
-        <TouchableOpacity
+        <Pressable
           style={{ marginTop: 20 }}
           onPress={() => SheetManager.hide("RegisterPassword-sheet")}
         >
           <Text style={{ color: theme.secondary, fontSize: 16 }}>Cancelar</Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
     </ActionSheet>
   );
