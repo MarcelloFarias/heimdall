@@ -2,10 +2,11 @@ import { Pressable, Text, StyleSheet } from "react-native";
 import theme from "../../../Theme";
 
 interface ButtonProps {
-  text: string;
+  text?: string;
   onPress: any;
   style?: any;
   bg?: string;
+  children?: any;
 }
 
 function Button(props: ButtonProps) {
@@ -22,8 +23,18 @@ function Button(props: ButtonProps) {
   });
 
   return (
-    <Pressable style={buttonStyle} onPress={props?.onPress}>
-      <Text style={{ fontSize: 18, color: theme.light }}>{props?.text}</Text>
+    <Pressable
+      style={({ pressed }: any) => [
+        buttonStyle,
+        { opacity: pressed ? 0.5 : 1 },
+      ]}
+      onPress={props?.onPress}
+    >
+      {props?.children ? (
+        props?.children
+      ) : (
+        <Text style={{ fontSize: 18, color: theme.light }}>{props?.text}</Text>
+      )}
     </Pressable>
   );
 }

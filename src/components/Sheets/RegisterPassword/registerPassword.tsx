@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Text, View, Pressable } from "react-native";
+import { Text, View } from "react-native";
 import ActionSheet, {
   SheetManager,
   SheetProps,
@@ -124,12 +124,12 @@ function RegisterPasswordSheet(props: SheetProps<"RegisterPassword-sheet">) {
           style={{ marginTop: 20 }}
         />
 
-        <Pressable
-          style={{ marginTop: 20 }}
+        <Button
+          style={{ marginTop: 20, backgroundColor: "transparent" }}
           onPress={() => SheetManager.hide("RegisterPassword-sheet")}
         >
           <Text style={{ color: theme.secondary, fontSize: 16 }}>Cancelar</Text>
-        </Pressable>
+        </Button>
       </View>
     </ActionSheet>
   );

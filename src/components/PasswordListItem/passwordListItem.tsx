@@ -1,13 +1,8 @@
-import {
-  View,
-  Text,
-  Pressable,
-  useWindowDimensions,
-  Animated,
-} from "react-native";
+import { View, Text, useWindowDimensions, Animated } from "react-native";
 import { Swipeable } from "react-native-gesture-handler";
 import theme from "../../../Theme";
 import { Feather } from "@expo/vector-icons";
+import Button from "../Button/button";
 
 interface PasswordListItemProps {
   password: any;
@@ -40,7 +35,7 @@ function PasswordListItem(props: PasswordListItemProps) {
           { opacity },
         ]}
       >
-        <Pressable
+        <Button
           style={{
             height: "100%",
             width: "50%",
@@ -49,11 +44,12 @@ function PasswordListItem(props: PasswordListItemProps) {
             justifyContent: "center",
             backgroundColor: theme.warning,
           }}
+          onPress={() => {}}
         >
           <Feather name="edit" size={24} color={theme.light} />
-        </Pressable>
+        </Button>
 
-        <Pressable
+        <Button
           style={{
             height: "100%",
             width: "50%",
@@ -61,12 +57,11 @@ function PasswordListItem(props: PasswordListItemProps) {
             alignItems: "center",
             justifyContent: "center",
             backgroundColor: theme.danger,
-            borderTopRightRadius: 4,
-            borderBottomRightRadius: 4,
           }}
+          onPress={() => {}}
         >
           <Feather name="trash-2" size={24} color={theme.light} />
-        </Pressable>
+        </Button>
       </Animated.View>
     );
   };

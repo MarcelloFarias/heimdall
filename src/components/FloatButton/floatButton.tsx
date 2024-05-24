@@ -10,12 +10,15 @@ interface FloatButtonProps {
 function FloatButton(props: FloatButtonProps) {
   return (
     <Pressable
-      style={{
-        ...props?.style,
-        position: "absolute",
-        bottom: 64,
-        right: 36,
-      }}
+      style={({ pressed }: any) => [
+        {
+          ...props?.style,
+          position: "absolute",
+          bottom: 64,
+          right: 36,
+          opacity: pressed ? 0.5 : 1,
+        },
+      ]}
       onPress={props?.onPress}
     >
       {props?.children}
