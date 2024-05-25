@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   View,
   Text,
@@ -22,6 +23,26 @@ interface PasswordListItemProps {
 
 function PasswordListItem(props: PasswordListItemProps) {
   const { width } = useWindowDimensions();
+
+  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
+
+  const handlePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
+
+  function renderPassword() {
+    if (isPasswordVisible) {
+      return props?.password?.password;
+    }
+
+    let ocultPassword = props?.password?.password.split("");
+
+    for (let i in ocultPassword) {
+      ocultPassword[i] = "*";
+    }
+
+    return ocultPassword.join("").toString();
+  }
 
   const renderRightActions = (
     progress: Animated.AnimatedInterpolation<string | number>,
@@ -142,9 +163,7 @@ function PasswordListItem(props: PasswordListItemProps) {
           >
             {props?.password?.passwordName}
           </Text>
-          <Text style={{ color: theme.secondary }}>
-            {props?.password?.password}
-          </Text>
+          <Text style={{ color: theme.secondary }}>{renderPassword()}</Text>
         </View>
 
         <View
@@ -156,11 +175,11 @@ function PasswordListItem(props: PasswordListItemProps) {
           }}
         >
           <Button
-            onPress={() => {}}
+            onPress={handlePasswordVisibility}
             style={{ width: 42, backgroundColor: "transparent" }}
           >
             <MaterialCommunityIcons
-              name="eye-outline"
+              name={isPasswordVisible ? "eye-off-outline" : "eye-outline"}
               size={24}
               color="black"
             />
