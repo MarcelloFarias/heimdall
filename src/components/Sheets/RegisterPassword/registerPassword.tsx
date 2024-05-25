@@ -72,6 +72,7 @@ function RegisterPasswordSheet(props: SheetProps<"RegisterPassword-sheet">) {
       closeOnTouchBackdrop={true}
       containerStyle={{ height: 500 }}
       headerAlwaysVisible={true}
+      gestureEnabled={true}
     >
       <View
         style={{

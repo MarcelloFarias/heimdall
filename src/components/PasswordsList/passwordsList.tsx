@@ -11,17 +11,24 @@ interface PasswordsListProps {
 function PasswordsList(props: PasswordsListProps) {
   return (
     <FlatList
+      style={{ flex: 1, flexGrow: 1 }}
       contentContainerStyle={{
         display: "flex",
         alignItems: "center",
-        flex: 1,
         width: "100%",
+        paddingBottom: 100,
       }}
       data={props.passwords}
       extraData={props.passwords}
       renderItem={({ item }: any) => (
-        <PasswordListItem password={item} setPasswords={props.setPasswords} />
+        <PasswordListItem
+          password={item}
+          passwords={props.passwords}
+          setPasswords={props.setPasswords}
+        />
       )}
+      keyExtractor={(item) => item.passwordName}
+      showsVerticalScrollIndicator={false}
       ListEmptyComponent={() => (
         <View
           style={{
