@@ -116,7 +116,7 @@ function PasswordListItem(props: PasswordListItemProps) {
           ]}
           onPress={() => {}}
         >
-          <Feather name="edit" size={24} color={theme.light} />
+          <Feather name="edit" size={24} color={theme.dark} />
         </Pressable>
 
         <Pressable
@@ -147,6 +147,8 @@ function PasswordListItem(props: PasswordListItemProps) {
         SheetManager.show("PasswordDetails-sheet", {
           payload: {
             password: props?.password,
+            setPasswords: props?.setPasswords,
+            passwords: props?.passwords,
           },
         })
       }

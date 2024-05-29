@@ -21,6 +21,8 @@ declare module "react-native-actions-sheet" {
     "PasswordDetails-sheet": SheetDefinition<{
       payload: {
         password: Password;
+        setPasswords: any;
+        passwords: Password[];
       };
     }>;
   }

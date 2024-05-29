@@ -1,9 +1,50 @@
-import { Text, View } from "react-native";
-import ActionSheet, { SheetProps } from "react-native-actions-sheet";
+import { Alert, Text, View } from "react-native";
+import ActionSheet, {
+  SheetManager,
+  SheetProps,
+} from "react-native-actions-sheet";
 import theme from "../../../../Theme";
 import Button from "../../Button/button";
+import Toast from "react-native-toast-message";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function PasswordDetailsSheet(props: SheetProps<"PasswordDetails-sheet">) {
+  const deletePassword = async () => {
+    Alert.alert(
+      "Tem certeza que deseja excluir essa senha ?",
+      "A ação não poderá ser desfeita",
+      [
+        {
+          text: "Cancelar",
+          style: "cancel",
+        },
+        {
+          text: "Excluir",
+          onPress: async () => {
+            await AsyncStorage.removeItem(
+              props?.payload?.password?.passwordName as string
+            );
+
+            props?.payload?.setPasswords(
+              props?.payload?.passwords.filter((password: any) => {
+                return password && password !== props?.payload?.password;
+              })
+            );
+
+            SheetManager.hide("PasswordDetails-sheet");
+
+            Toast.show({
+              type: "success",
+              text1: "Senha excluída com sucesso !",
+              text2: `${props?.payload?.password?.passwordName} foi removida da sua lista`,
+            });
+          },
+          style: "destructive",
+        },
+      ]
+    );
+  };
+
   return (
     <ActionSheet
       closeOnPressBack={true}
@@ -73,7 +114,7 @@ function PasswordDetailsSheet(props: SheetProps<"PasswordDetails-sheet">) {
         </Button>
 
         <Button
-          onPress={() => {}}
+          onPress={deletePassword}
           style={{ backgroundColor: theme.danger, marginTop: 16 }}
         >
           <Text style={{ color: theme.light }}>Excluir</Text>
