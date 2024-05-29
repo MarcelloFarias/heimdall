@@ -8,6 +8,7 @@ interface InputProps {
   value?: any;
   placeholder?: string;
   label?: string;
+  secureTextEntry?: boolean;
 }
 
 function Input(props: InputProps) {
@@ -18,6 +19,7 @@ function Input(props: InputProps) {
     borderWidth: props?.style?.borderWidth || 1,
     borderRadius: props?.style?.borderRadius || 4,
     borderColor: props?.style?.borderColor || theme.dark,
+    height: props?.style?.height || 42,
     marginTop: 0,
   };
 
@@ -38,6 +40,7 @@ function Input(props: InputProps) {
         value={props?.value}
         keyboardType={props?.keyboardType || "default"}
         placeholder={props?.placeholder}
+        secureTextEntry={props?.secureTextEntry}
       />
     </View>
   );

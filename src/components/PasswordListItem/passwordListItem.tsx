@@ -6,6 +6,7 @@ import {
   useWindowDimensions,
   Animated,
   Alert,
+  Platform,
 } from "react-native";
 import { Swipeable } from "react-native-gesture-handler";
 import theme from "../../../Theme";
@@ -143,7 +144,7 @@ function PasswordListItem(props: PasswordListItemProps) {
       <View
         style={{
           width: width - 22,
-          height: 80,
+          height: Platform.OS === "ios" ? 86 : 100,
           marginTop: 12,
           padding: 10,
           borderRadius: 4,
@@ -181,7 +182,7 @@ function PasswordListItem(props: PasswordListItemProps) {
             <MaterialCommunityIcons
               name={isPasswordVisible ? "eye-off-outline" : "eye-outline"}
               size={24}
-              color="black"
+              color={isPasswordVisible ? theme.secondary : theme.dark}
             />
           </Button>
 
@@ -189,18 +190,7 @@ function PasswordListItem(props: PasswordListItemProps) {
             onPress={() => {}}
             style={{ width: 42, backgroundColor: "transparent" }}
           >
-            <Feather name="copy" size={24} color="black" />
-          </Button>
-
-          <Button
-            onPress={() => {}}
-            style={{ width: 36, backgroundColor: "transparent" }}
-          >
-            <MaterialCommunityIcons
-              name="dots-vertical"
-              size={24}
-              color="black"
-            />
+            <Feather name="copy" size={24} color={theme.dark} />
           </Button>
         </View>
       </View>

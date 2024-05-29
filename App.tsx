@@ -44,7 +44,7 @@ function App() {
   return (
     <GestureHandlerRootView>
       <SheetProvider>
-        <SafeAreaView style={{ flex: 1, backgroundColor: theme.light }}>
+        <SafeAreaView style={{ flex: 1 }}>
           <Header />
           <PasswordsList passwords={passwords} setPasswords={setPasswords} />
           <FloatButton
