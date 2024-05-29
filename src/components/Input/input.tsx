@@ -9,6 +9,7 @@ interface InputProps {
   placeholder?: string;
   label?: string;
   secureTextEntry?: boolean;
+  rightElement?: any;
 }
 
 function Input(props: InputProps) {
@@ -34,14 +35,17 @@ function Input(props: InputProps) {
       <Text style={{ marginBottom: 5, color: theme.secondary }}>
         {props?.label}
       </Text>
-      <TextInput
-        style={inputStyle}
-        onChangeText={props?.onChangeText}
-        value={props?.value}
-        keyboardType={props?.keyboardType || "default"}
-        placeholder={props?.placeholder}
-        secureTextEntry={props?.secureTextEntry}
-      />
+      <View style={{ display: "flex", flexDirection: "row" }}>
+        <TextInput
+          style={inputStyle}
+          onChangeText={props?.onChangeText}
+          value={props?.value}
+          keyboardType={props?.keyboardType || "default"}
+          placeholder={props?.placeholder}
+          secureTextEntry={props?.secureTextEntry}
+        />
+        {props?.rightElement ? props?.rightElement : null}
+      </View>
     </View>
   );
 }

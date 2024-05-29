@@ -2,9 +2,10 @@ import { FlatList, Text, View, Image } from "react-native";
 import theme from "../../../Theme";
 import PasswordListItem from "../PasswordListItem/passwordListItem";
 const emptyListImage = require("../../../assets/emptyList.png");
+import { Password } from "../../interfaces/password";
 
 interface PasswordsListProps {
-  passwords: any;
+  passwords: Password[];
   setPasswords: any;
 }
 

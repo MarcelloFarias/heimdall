@@ -15,9 +15,10 @@ import Button from "../Button/button";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Toast from "react-native-toast-message";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Password } from "../../interfaces/password";
 
 interface PasswordListItemProps {
-  password: any;
+  password: Password;
   setPasswords: any;
   passwords: any;
 }
@@ -140,61 +141,63 @@ function PasswordListItem(props: PasswordListItemProps) {
   };
 
   return (
-    <Swipeable renderRightActions={renderRightActions}>
-      <View
-        style={{
-          width: width - 22,
-          height: Platform.OS === "ios" ? 86 : 100,
-          marginTop: 12,
-          padding: 10,
-          borderRadius: 4,
-          borderWidth: 1,
-          borderColor: theme.secondary,
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
-        <View>
-          <Text
-            style={{
-              color: theme.dark,
-              fontSize: 18,
-            }}
-          >
-            {props?.password?.passwordName}
-          </Text>
-          <Text style={{ color: theme.secondary }}>{renderPassword()}</Text>
-        </View>
-
+    <Pressable onPress={() => {}}>
+      <Swipeable renderRightActions={renderRightActions}>
         <View
           style={{
+            width: width - 22,
+            height: Platform.OS === "ios" ? 86 : 100,
+            marginTop: 12,
+            padding: 10,
+            borderRadius: 4,
+            borderWidth: 1,
+            borderColor: theme.secondary,
             display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
             flexDirection: "row",
+            justifyContent: "space-between",
           }}
         >
-          <Button
-            onPress={handlePasswordVisibility}
-            style={{ width: 42, backgroundColor: "transparent" }}
-          >
-            <MaterialCommunityIcons
-              name={isPasswordVisible ? "eye-off-outline" : "eye-outline"}
-              size={24}
-              color={isPasswordVisible ? theme.secondary : theme.dark}
-            />
-          </Button>
+          <View>
+            <Text
+              style={{
+                color: theme.dark,
+                fontSize: 18,
+              }}
+            >
+              {props?.password?.passwordName}
+            </Text>
+            <Text style={{ color: theme.secondary }}>{renderPassword()}</Text>
+          </View>
 
-          <Button
-            onPress={() => {}}
-            style={{ width: 42, backgroundColor: "transparent" }}
+          <View
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+            }}
           >
-            <Feather name="copy" size={24} color={theme.dark} />
-          </Button>
+            <Button
+              onPress={handlePasswordVisibility}
+              style={{ width: 42, backgroundColor: "transparent" }}
+            >
+              <MaterialCommunityIcons
+                name={isPasswordVisible ? "eye-off-outline" : "eye-outline"}
+                size={24}
+                color={isPasswordVisible ? theme.secondary : theme.dark}
+              />
+            </Button>
+
+            <Button
+              onPress={() => {}}
+              style={{ width: 42, backgroundColor: "transparent" }}
+            >
+              <Feather name="copy" size={24} color={theme.dark} />
+            </Button>
+          </View>
         </View>
-      </View>
-    </Swipeable>
+      </Swipeable>
+    </Pressable>
   );
 }
 

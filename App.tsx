@@ -10,9 +10,10 @@ import PasswordsList from "./src/components/PasswordsList/passwordsList";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Toast from "react-native-toast-message";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { Password } from "./src/interfaces/password";
 
 function App() {
-  const [passwords, setPasswords] = useState<any[]>([]);
+  const [passwords, setPasswords] = useState<Password[]>([]);
 
   const getAllPasswords = async () => {
     const keys = await AsyncStorage.getAllKeys();

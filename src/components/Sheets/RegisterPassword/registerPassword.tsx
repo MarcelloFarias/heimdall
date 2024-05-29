@@ -8,20 +8,22 @@ import theme from "../../../../Theme";
 import Input from "../../Input/input";
 import Button from "../../Button/button";
 import { AntDesign } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Toast from "react-native-toast-message";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { PasswordRegistration } from "../../../interfaces/password";
 
 function RegisterPasswordSheet(props: SheetProps<"RegisterPassword-sheet">) {
-  const [password, setPassword] = useState<{
-    passwordName: string;
-    passwordValue: string;
-    passwordUser?: string;
-  }>({
+  const [password, setPassword] = useState<PasswordRegistration>({
     passwordName: "",
     passwordValue: "",
     passwordUser: "",
   });
+  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
+
+  const handlePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
 
   async function savePassword() {
     if (password.passwordName && password.passwordValue) {
@@ -107,6 +109,24 @@ function RegisterPasswordSheet(props: SheetProps<"RegisterPassword-sheet">) {
           }}
           label="Digite a senha que deseja guardar"
           placeholder="Digite sua senha aqui..."
+          secureTextEntry={!isPasswordVisible}
+          rightElement={
+            <Button
+              style={{
+                width: 42,
+                position: "relative",
+                right: "100%",
+                backgroundColor: "transparent",
+              }}
+              onPress={handlePasswordVisibility}
+            >
+              <MaterialCommunityIcons
+                name={isPasswordVisible ? "eye-off-outline" : "eye-outline"}
+                color={isPasswordVisible ? theme.secondary : theme.dark}
+                size={22}
+              />
+            </Button>
+          }
         />
 
         <Input
