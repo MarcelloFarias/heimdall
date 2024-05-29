@@ -16,6 +16,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Toast from "react-native-toast-message";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Password } from "../../interfaces/password";
+import { SheetManager } from "react-native-actions-sheet";
 
 interface PasswordListItemProps {
   password: Password;
@@ -141,7 +142,15 @@ function PasswordListItem(props: PasswordListItemProps) {
   };
 
   return (
-    <Pressable onPress={() => {}}>
+    <Pressable
+      onPress={() =>
+        SheetManager.show("PasswordDetails-sheet", {
+          payload: {
+            password: props?.password,
+          },
+        })
+      }
+    >
       <Swipeable renderRightActions={renderRightActions}>
         <View
           style={{

@@ -33,7 +33,7 @@ function RegisterPasswordSheet(props: SheetProps<"RegisterPassword-sheet">) {
           JSON.stringify({
             passwordName: password.passwordName,
             password: password.passwordValue,
-            userForPassword: password.passwordUser,
+            passwordUser: password.passwordUser,
           })
         );
 
@@ -141,10 +141,11 @@ function RegisterPasswordSheet(props: SheetProps<"RegisterPassword-sheet">) {
         />
 
         <Button
-          text="Salvar"
           onPress={() => savePassword()}
-          style={{ marginTop: 20 }}
-        />
+          style={{ marginTop: 20, backgroundColor: theme.success }}
+        >
+          <Text style={{ fontSize: 16, color: theme.light }}>Salvar</Text>
+        </Button>
 
         <Button
           style={{ marginTop: 20, backgroundColor: "transparent" }}

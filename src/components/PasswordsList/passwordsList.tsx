@@ -17,7 +17,7 @@ function PasswordsList(props: PasswordsListProps) {
         display: "flex",
         alignItems: "center",
         width: "100%",
-        paddingBottom: 100,
+        paddingBottom: 124,
       }}
       data={props.passwords}
       extraData={props.passwords}
