@@ -17,6 +17,7 @@ import Toast from "react-native-toast-message";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Password } from "../../interfaces/password";
 import { SheetManager } from "react-native-actions-sheet";
+import * as Clipboard from "expo-clipboard";
 
 interface PasswordListItemProps {
   password: Password;
@@ -28,6 +29,7 @@ function PasswordListItem(props: PasswordListItemProps) {
   const { width } = useWindowDimensions();
 
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
+  const [isCopied, setIsCopied] = useState<boolean>(false);
 
   const handlePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
@@ -46,6 +48,16 @@ function PasswordListItem(props: PasswordListItemProps) {
 
     return ocultPassword.join("").toString();
   }
+
+  const copyToClipboard = async () => {
+    setIsCopied(true);
+    await Clipboard.setStringAsync(props?.password?.password);
+
+    Toast.show({
+      type: "info",
+      text1: "Senha copiada para área de transferência !",
+    });
+  };
 
   const renderRightActions = (
     progress: Animated.AnimatedInterpolation<string | number>,
@@ -185,7 +197,13 @@ function PasswordListItem(props: PasswordListItemProps) {
             >
               {props?.password?.passwordName}
             </Text>
-            <Text style={{ color: theme.secondary }}>{renderPassword()}</Text>
+            <Text
+              style={{
+                color: theme.secondary,
+              }}
+            >
+              {renderPassword()}
+            </Text>
           </View>
 
           <View
@@ -208,10 +226,14 @@ function PasswordListItem(props: PasswordListItemProps) {
             </Button>
 
             <Button
-              onPress={() => {}}
+              onPress={copyToClipboard}
               style={{ width: 42, backgroundColor: "transparent" }}
             >
-              <Feather name="copy" size={24} color={theme.dark} />
+              {isCopied ? (
+                <Feather name="check-circle" size={24} color={theme.success} />
+              ) : (
+                <Feather name="copy" size={24} color={theme.dark} />
+              )}
             </Button>
           </View>
         </View>
