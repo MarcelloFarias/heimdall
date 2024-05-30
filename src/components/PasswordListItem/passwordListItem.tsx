@@ -114,7 +114,15 @@ function PasswordListItem(props: PasswordListItemProps) {
               opacity: pressed ? 0.5 : 1,
             },
           ]}
-          onPress={() => {}}
+          onPress={() =>
+            SheetManager.show("UpdatePassword-sheet", {
+              payload: {
+                password: props?.password,
+                setPasswords: props?.setPasswords,
+                passwords: props?.passwords,
+              },
+            })
+          }
         >
           <Feather name="edit" size={24} color={theme.dark} />
         </Pressable>

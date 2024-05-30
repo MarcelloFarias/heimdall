@@ -109,7 +109,18 @@ function PasswordDetailsSheet(props: SheetProps<"PasswordDetails-sheet">) {
           alignItems: "center",
         }}
       >
-        <Button onPress={() => {}} style={{ backgroundColor: theme.warning }}>
+        <Button
+          onPress={() => {
+            SheetManager.show("UpdatePassword-sheet", {
+              payload: {
+                password: props?.payload?.password!,
+                setPasswords: props?.payload?.setPasswords,
+                passwords: props?.payload?.passwords!,
+              },
+            });
+          }}
+          style={{ backgroundColor: theme.warning }}
+        >
           <Text style={{ color: theme.dark }}>Editar</Text>
         </Button>
 
@@ -121,7 +132,7 @@ function PasswordDetailsSheet(props: SheetProps<"PasswordDetails-sheet">) {
         </Button>
 
         <Button
-          onPress={() => {}}
+          onPress={() => SheetManager.hide("PasswordDetails-sheet")}
           style={{ backgroundColor: "transparent", marginTop: 16 }}
         >
           <Text style={{ color: theme.secondary, fontSize: 16 }}>Cancelar</Text>
