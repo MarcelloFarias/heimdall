@@ -21,7 +21,6 @@ import * as Clipboard from "expo-clipboard";
 
 interface PasswordListItemProps {
   password: Password;
-  setPasswords: any;
   passwords: any;
 }
 
@@ -83,12 +82,6 @@ function PasswordListItem(props: PasswordListItemProps) {
             onPress: async () => {
               await AsyncStorage.removeItem(props?.password.passwordName);
 
-              props?.setPasswords(
-                props?.passwords.filter((password: any) => {
-                  return password && password !== props?.password;
-                })
-              );
-
               Toast.show({
                 type: "success",
                 text1: "Senha excluída com sucesso !",
@@ -130,7 +123,6 @@ function PasswordListItem(props: PasswordListItemProps) {
             SheetManager.show("UpdatePassword-sheet", {
               payload: {
                 password: props?.password,
-                setPasswords: props?.setPasswords,
                 passwords: props?.passwords,
               },
             })
@@ -167,7 +159,6 @@ function PasswordListItem(props: PasswordListItemProps) {
         SheetManager.show("PasswordDetails-sheet", {
           payload: {
             password: props?.password,
-            setPasswords: props?.setPasswords,
             passwords: props?.passwords,
           },
         })

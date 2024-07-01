@@ -4,7 +4,7 @@ import theme from "../../../Theme";
 interface InputProps {
   keyboardType?: any;
   style?: any;
-  onChangeText: any;
+  onChangeText?: any;
   value?: any;
   placeholder?: string;
   label?: string;

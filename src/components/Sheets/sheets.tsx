@@ -14,16 +14,9 @@ registerSheet("UpdatePassword-sheet", UpdatePasswordSheet);
 
 declare module "react-native-actions-sheet" {
   interface Sheets {
-    "RegisterPassword-sheet": SheetDefinition<{
-      payload: {
-        setPasswords: any;
-      };
-    }>;
-
     "PasswordDetails-sheet": SheetDefinition<{
       payload: {
         password: Password;
-        setPasswords: any;
         passwords: Password[];
       };
     }>;
@@ -31,7 +24,6 @@ declare module "react-native-actions-sheet" {
     "UpdatePassword-sheet": SheetDefinition<{
       payload: {
         password: Password;
-        setPasswords: any;
         passwords: Password[];
       };
     }>;

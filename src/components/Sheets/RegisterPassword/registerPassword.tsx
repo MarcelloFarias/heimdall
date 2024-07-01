@@ -13,7 +13,7 @@ import Toast from "react-native-toast-message";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { PasswordRegistration } from "../../../interfaces/password";
 
-function RegisterPasswordSheet(props: SheetProps<"RegisterPassword-sheet">) {
+function RegisterPasswordSheet() {
   const [password, setPassword] = useState<PasswordRegistration>({
     passwordName: "",
     passwordValue: "",
@@ -40,13 +40,6 @@ function RegisterPasswordSheet(props: SheetProps<"RegisterPassword-sheet">) {
         SheetManager.hide("RegisterPassword-sheet");
 
         const newPassword = await AsyncStorage.getItem(password.passwordName);
-
-        if (newPassword !== null) {
-          props?.payload?.setPasswords((prevPasswords: any) => [
-            ...prevPasswords,
-            JSON.parse(newPassword),
-          ]);
-        }
 
         Toast.show({
           type: "success",

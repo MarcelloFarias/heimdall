@@ -3,13 +3,12 @@ import theme from "../../../Theme";
 import PasswordListItem from "../PasswordListItem/passwordListItem";
 const emptyListImage = require("../../../assets/emptyList.png");
 import { Password } from "../../interfaces/password";
+import { usePasswords } from "../../hooks/usePasswords";
+import { useEffect } from "react";
 
-interface PasswordsListProps {
-  passwords: Password[];
-  setPasswords: any;
-}
+function PasswordsList() {
+  const { passwords } = usePasswords();
 
-function PasswordsList(props: PasswordsListProps) {
   return (
     <FlatList
       style={{ flex: 1, flexGrow: 1 }}
@@ -19,14 +18,10 @@ function PasswordsList(props: PasswordsListProps) {
         width: "100%",
         paddingBottom: 124,
       }}
-      data={props.passwords}
-      extraData={props.passwords}
+      data={passwords}
+      extraData={passwords}
       renderItem={({ item }: any) => (
-        <PasswordListItem
-          password={item}
-          passwords={props.passwords}
-          setPasswords={props.setPasswords}
-        />
+        <PasswordListItem password={item} passwords={passwords} />
       )}
       keyExtractor={(item) => item.passwordName}
       showsVerticalScrollIndicator={false}
