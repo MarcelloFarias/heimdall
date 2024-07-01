@@ -7,8 +7,11 @@ import theme from "../../../../Theme";
 import Button from "../../Button/button";
 import Toast from "react-native-toast-message";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { usePasswords } from "../../../hooks/usePasswords";
 
 function PasswordDetailsSheet(props: SheetProps<"PasswordDetails-sheet">) {
+  const { passwords, setPasswords } = usePasswords();
+
   const deletePassword = async () => {
     Alert.alert(
       "Tem certeza que deseja excluir essa senha ?",
@@ -25,8 +28,8 @@ function PasswordDetailsSheet(props: SheetProps<"PasswordDetails-sheet">) {
               props?.payload?.password?.passwordName as string
             );
 
-            props?.payload?.setPasswords(
-              props?.payload?.passwords.filter((password: any) => {
+            setPasswords(
+              passwords.filter((password: any) => {
                 return password && password !== props?.payload?.password;
               })
             );
@@ -114,8 +117,6 @@ function PasswordDetailsSheet(props: SheetProps<"PasswordDetails-sheet">) {
             SheetManager.show("UpdatePassword-sheet", {
               payload: {
                 password: props?.payload?.password!,
-                setPasswords: props?.payload?.setPasswords,
-                passwords: props?.payload?.passwords!,
               },
             });
           }}

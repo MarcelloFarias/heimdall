@@ -9,8 +9,11 @@ import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Text, View } from "react-native";
 import Input from "../../Input/input";
 import theme from "../../../../Theme";
+import { usePasswords } from "../../../hooks/usePasswords";
 
 function UpdatePasswordSheet(props: SheetProps<"UpdatePassword-sheet">) {
+  const { passwords, setPasswords } = usePasswords();
+
   const [password, setPassword] = useState<PasswordRegistration>({
     passwordName: props?.payload?.password?.passwordName as string,
     passwordValue: props?.payload?.password?.password as string,
@@ -38,7 +41,7 @@ function UpdatePasswordSheet(props: SheetProps<"UpdatePassword-sheet">) {
           })
         );
 
-        props?.payload?.setPasswords([]);
+        setPasswords([]);
 
         const keys = await AsyncStorage.getAllKeys();
 
@@ -46,7 +49,7 @@ function UpdatePasswordSheet(props: SheetProps<"UpdatePassword-sheet">) {
           const password = await AsyncStorage.getItem(key);
 
           if (password !== null) {
-            props?.payload?.setPasswords((prevPasswords: any) => [
+            setPasswords((prevPasswords: any) => [
               ...prevPasswords,
               JSON.parse(password),
             ]);

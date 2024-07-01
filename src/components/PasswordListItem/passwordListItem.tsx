@@ -18,13 +18,14 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Password } from "../../interfaces/password";
 import { SheetManager } from "react-native-actions-sheet";
 import * as Clipboard from "expo-clipboard";
+import { usePasswords } from "../../hooks/usePasswords";
 
 interface PasswordListItemProps {
   password: Password;
-  passwords: any;
 }
 
 function PasswordListItem(props: PasswordListItemProps) {
+  const { passwords, setPasswords } = usePasswords();
   const { width } = useWindowDimensions();
 
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
@@ -82,6 +83,12 @@ function PasswordListItem(props: PasswordListItemProps) {
             onPress: async () => {
               await AsyncStorage.removeItem(props?.password.passwordName);
 
+              setPasswords(
+                passwords.filter((password: any) => {
+                  return password && password !== props?.password;
+                })
+              );
+
               Toast.show({
                 type: "success",
                 text1: "Senha excluída com sucesso !",
@@ -123,7 +130,6 @@ function PasswordListItem(props: PasswordListItemProps) {
             SheetManager.show("UpdatePassword-sheet", {
               payload: {
                 password: props?.password,
-                passwords: props?.passwords,
               },
             })
           }
@@ -159,7 +165,6 @@ function PasswordListItem(props: PasswordListItemProps) {
         SheetManager.show("PasswordDetails-sheet", {
           payload: {
             password: props?.password,
-            passwords: props?.passwords,
           },
         })
       }

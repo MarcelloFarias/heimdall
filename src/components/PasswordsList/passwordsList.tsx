@@ -2,9 +2,7 @@ import { FlatList, Text, View, Image } from "react-native";
 import theme from "../../../Theme";
 import PasswordListItem from "../PasswordListItem/passwordListItem";
 const emptyListImage = require("../../../assets/emptyList.png");
-import { Password } from "../../interfaces/password";
 import { usePasswords } from "../../hooks/usePasswords";
-import { useEffect } from "react";
 
 function PasswordsList() {
   const { passwords } = usePasswords();
@@ -20,9 +18,7 @@ function PasswordsList() {
       }}
       data={passwords}
       extraData={passwords}
-      renderItem={({ item }: any) => (
-        <PasswordListItem password={item} passwords={passwords} />
-      )}
+      renderItem={({ item }: any) => <PasswordListItem password={item} />}
       keyExtractor={(item) => item.passwordName}
       showsVerticalScrollIndicator={false}
       ListEmptyComponent={() => (

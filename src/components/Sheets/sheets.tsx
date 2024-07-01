@@ -17,14 +17,12 @@ declare module "react-native-actions-sheet" {
     "PasswordDetails-sheet": SheetDefinition<{
       payload: {
         password: Password;
-        passwords: Password[];
       };
     }>;
 
     "UpdatePassword-sheet": SheetDefinition<{
       payload: {
         password: Password;
-        passwords: Password[];
       };
     }>;
   }
