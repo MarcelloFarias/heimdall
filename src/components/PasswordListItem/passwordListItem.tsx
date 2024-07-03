@@ -19,6 +19,7 @@ import { Password } from "../../interfaces/password";
 import { SheetManager } from "react-native-actions-sheet";
 import * as Clipboard from "expo-clipboard";
 import { usePasswords } from "../../hooks/usePasswords";
+import { renderLimitChars } from "../../functions/funcitons";
 
 interface PasswordListItemProps {
   password: Password;
@@ -37,7 +38,7 @@ function PasswordListItem(props: PasswordListItemProps) {
 
   function renderPassword() {
     if (isPasswordVisible) {
-      return props?.password?.password;
+      return renderLimitChars(props?.password?.password);
     }
 
     let ocultPassword = props?.password?.password.split("");
@@ -46,7 +47,7 @@ function PasswordListItem(props: PasswordListItemProps) {
       ocultPassword[i] = "*";
     }
 
-    return ocultPassword.join("").toString();
+    return renderLimitChars(ocultPassword.join("").toString());
   }
 
   const copyToClipboard = async () => {
@@ -191,7 +192,7 @@ function PasswordListItem(props: PasswordListItemProps) {
                 fontSize: 18,
               }}
             >
-              {props?.password?.passwordName}
+              {renderLimitChars(props?.password?.passwordName)}
             </Text>
             <Text
               style={{

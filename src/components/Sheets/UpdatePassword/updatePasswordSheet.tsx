@@ -3,7 +3,7 @@ import { useState } from "react";
 import ActionSheet from "react-native-actions-sheet";
 import { SheetManager, SheetProps } from "react-native-actions-sheet";
 import Toast from "react-native-toast-message";
-import { Password, PasswordRegistration } from "../../../interfaces/password";
+import { PasswordRegistration } from "../../../interfaces/password";
 import Button from "../../Button/button";
 import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Text, View } from "react-native";
@@ -12,7 +12,7 @@ import theme from "../../../../Theme";
 import { usePasswords } from "../../../hooks/usePasswords";
 
 function UpdatePasswordSheet(props: SheetProps<"UpdatePassword-sheet">) {
-  const { passwords, setPasswords } = usePasswords();
+  const { setPasswords } = usePasswords();
 
   const [password, setPassword] = useState<PasswordRegistration>({
     passwordName: props?.payload?.password?.passwordName as string,

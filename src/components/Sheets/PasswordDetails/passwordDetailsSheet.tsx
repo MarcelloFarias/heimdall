@@ -8,6 +8,8 @@ import Button from "../../Button/button";
 import Toast from "react-native-toast-message";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { usePasswords } from "../../../hooks/usePasswords";
+import { Feather } from "@expo/vector-icons";
+import { renderLimitChars } from "../../../functions/funcitons";
 
 function PasswordDetailsSheet(props: SheetProps<"PasswordDetails-sheet">) {
   const { passwords, setPasswords } = usePasswords();
@@ -52,22 +54,63 @@ function PasswordDetailsSheet(props: SheetProps<"PasswordDetails-sheet">) {
     <ActionSheet
       closeOnPressBack={true}
       closeOnTouchBackdrop={true}
-      containerStyle={{ height: 400 }}
+      containerStyle={{ height: 300 }}
       headerAlwaysVisible={true}
       gestureEnabled={true}
     >
-      <Text
+      <View
         style={{
-          textAlign: "center",
           paddingVertical: 20,
-          fontSize: 24,
-          color: theme.dark,
+          paddingHorizontal: 20,
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
         }}
       >
-        {props?.payload?.password?.passwordName}
-      </Text>
+        <Text
+          style={{
+            fontSize: 24,
+            color: theme.dark,
+          }}
+        >
+          {renderLimitChars(props?.payload?.password?.passwordName!)}
+        </Text>
 
-      <View>
+        <View
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "row",
+          }}
+        >
+          <Button
+            onPress={() => {
+              SheetManager.show("UpdatePassword-sheet", {
+                payload: {
+                  password: props?.payload?.password!,
+                },
+              });
+            }}
+            style={{ width: 50, backgroundColor: "transparent" }}
+          >
+            <Feather name="edit" size={24} color={theme.warning} />
+          </Button>
+
+          <Button
+            onPress={deletePassword}
+            style={{
+              width: 50,
+              marginLeft: 10,
+              backgroundColor: "transparent",
+            }}
+          >
+            <Feather name="trash-2" size={24} color={theme.danger} />
+          </Button>
+        </View>
+      </View>
+
+      <View style={{ marginTop: 20 }}>
         <View
           style={{
             display: "flex",
@@ -81,7 +124,7 @@ function PasswordDetailsSheet(props: SheetProps<"PasswordDetails-sheet">) {
         >
           <Text style={{ fontSize: 18, color: theme.dark }}>Senha</Text>
           <Text style={{ color: theme.secondary, fontSize: 18 }}>
-            {props?.payload?.password?.password}
+            {renderLimitChars(props?.payload?.password?.password!)}
           </Text>
         </View>
 
@@ -99,45 +142,10 @@ function PasswordDetailsSheet(props: SheetProps<"PasswordDetails-sheet">) {
           <Text style={{ fontSize: 18, color: theme.dark }}>Usuário</Text>
           <Text style={{ color: theme.secondary, fontSize: 18 }}>
             {props?.payload?.password?.passwordUser
-              ? props?.payload?.password?.passwordUser
+              ? renderLimitChars(props?.payload?.password?.passwordUser)
               : "-"}
           </Text>
         </View>
-      </View>
-
-      <View
-        style={{
-          marginTop: 32,
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <Button
-          onPress={() => {
-            SheetManager.show("UpdatePassword-sheet", {
-              payload: {
-                password: props?.payload?.password!,
-              },
-            });
-          }}
-          style={{ backgroundColor: theme.warning }}
-        >
-          <Text style={{ color: theme.dark }}>Editar</Text>
-        </Button>
-
-        <Button
-          onPress={deletePassword}
-          style={{ backgroundColor: theme.danger, marginTop: 16 }}
-        >
-          <Text style={{ color: theme.light }}>Excluir</Text>
-        </Button>
-
-        <Button
-          onPress={() => SheetManager.hide("PasswordDetails-sheet")}
-          style={{ backgroundColor: "transparent", marginTop: 16 }}
-        >
-          <Text style={{ color: theme.secondary, fontSize: 16 }}>Cancelar</Text>
-        </Button>
       </View>
     </ActionSheet>
   );

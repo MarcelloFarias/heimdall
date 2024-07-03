@@ -26,9 +26,7 @@ function App() {
             <Header />
             <PasswordsList />
             <FloatButton
-              onPress={() => {
-                SheetManager.show("RegisterPassword-sheet");
-              }}
+              onPress={() => SheetManager.show("RegisterPassword-sheet")}
             >
               <AntDesign name="pluscircle" size={58} color={theme.primary} />
             </FloatButton>
