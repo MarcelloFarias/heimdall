@@ -20,6 +20,7 @@ import { SheetManager } from "react-native-actions-sheet";
 import * as Clipboard from "expo-clipboard";
 import { usePasswords } from "../../hooks/usePasswords";
 import { renderLimitChars } from "../../functions/funcitons";
+import PasswordStrength from "../PasswordStrength/passwordStrength";
 
 interface PasswordListItemProps {
   password: Password;
@@ -123,7 +124,7 @@ function PasswordListItem(props: PasswordListItemProps) {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              backgroundColor: theme.warning,
+              backgroundColor: theme.yellow[400],
               opacity: pressed ? 0.5 : 1,
             },
           ]}
@@ -135,7 +136,7 @@ function PasswordListItem(props: PasswordListItemProps) {
             })
           }
         >
-          <Feather name="edit" size={24} color={theme.dark} />
+          <Feather name="edit" size={24} color={theme.gray[50]} />
         </Pressable>
 
         <Pressable
@@ -146,7 +147,7 @@ function PasswordListItem(props: PasswordListItemProps) {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              backgroundColor: theme.danger,
+              backgroundColor: theme.red[400],
               borderTopRightRadius: 4,
               borderBottomRightRadius: 4,
               opacity: pressed ? 0.5 : 1,
@@ -154,7 +155,7 @@ function PasswordListItem(props: PasswordListItemProps) {
           ]}
           onPress={deletePassword}
         >
-          <Feather name="trash-2" size={24} color={theme.light} />
+          <Feather name="trash-2" size={24} color={theme.gray[50]} />
         </Pressable>
       </Animated.View>
     );
@@ -179,7 +180,7 @@ function PasswordListItem(props: PasswordListItemProps) {
             padding: 10,
             borderRadius: 4,
             borderWidth: 1,
-            borderColor: theme.secondary,
+            borderColor: theme.gray[500],
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
@@ -188,7 +189,7 @@ function PasswordListItem(props: PasswordListItemProps) {
           <View>
             <Text
               style={{
-                color: theme.dark,
+                color: theme.gray[900],
                 fontSize: 18,
               }}
             >
@@ -196,11 +197,15 @@ function PasswordListItem(props: PasswordListItemProps) {
             </Text>
             <Text
               style={{
-                color: theme.secondary,
+                color: theme.gray[500],
               }}
             >
               {renderPassword()}
             </Text>
+
+            <View style={{ marginTop: 10 }}>
+              <PasswordStrength password={props?.password?.password} />
+            </View>
           </View>
 
           <View
@@ -218,7 +223,7 @@ function PasswordListItem(props: PasswordListItemProps) {
               <MaterialCommunityIcons
                 name={isPasswordVisible ? "eye-off-outline" : "eye-outline"}
                 size={24}
-                color={isPasswordVisible ? theme.secondary : theme.dark}
+                color={isPasswordVisible ? theme.gray[500] : theme.gray[900]}
               />
             </Button>
 
@@ -227,9 +232,13 @@ function PasswordListItem(props: PasswordListItemProps) {
               style={{ width: 42, backgroundColor: "transparent" }}
             >
               {isCopied ? (
-                <Feather name="check-circle" size={24} color={theme.success} />
+                <Feather
+                  name="check-circle"
+                  size={24}
+                  color={theme.green[400]}
+                />
               ) : (
-                <Feather name="copy" size={24} color={theme.dark} />
+                <Feather name="copy" size={24} color={theme.gray[900]} />
               )}
             </Button>
           </View>

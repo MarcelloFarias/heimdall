@@ -31,7 +31,7 @@ function PasswordsList() {
           }}
         >
           <Image style={{ width: 200, height: 200 }} source={emptyListImage} />
-          <Text style={{ color: theme.secondary }}>
+          <Text style={{ color: theme.gray[500] }}>
             Você ainda não guardou nenhuma senha
           </Text>
         </View>

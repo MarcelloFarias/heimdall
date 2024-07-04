@@ -10,6 +10,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { usePasswords } from "../../../hooks/usePasswords";
 import { Feather } from "@expo/vector-icons";
 import { renderLimitChars } from "../../../functions/funcitons";
+import PasswordStrength from "../../PasswordStrength/passwordStrength";
 
 function PasswordDetailsSheet(props: SheetProps<"PasswordDetails-sheet">) {
   const { passwords, setPasswords } = usePasswords();
@@ -71,7 +72,7 @@ function PasswordDetailsSheet(props: SheetProps<"PasswordDetails-sheet">) {
         <Text
           style={{
             fontSize: 24,
-            color: theme.dark,
+            color: theme.gray[900],
           }}
         >
           {renderLimitChars(props?.payload?.password?.passwordName!)}
@@ -94,7 +95,7 @@ function PasswordDetailsSheet(props: SheetProps<"PasswordDetails-sheet">) {
             }}
             style={{ width: 50, backgroundColor: "transparent" }}
           >
-            <Feather name="edit" size={24} color={theme.warning} />
+            <Feather name="edit" size={24} color={theme.yellow[500]} />
           </Button>
 
           <Button
@@ -105,7 +106,7 @@ function PasswordDetailsSheet(props: SheetProps<"PasswordDetails-sheet">) {
               backgroundColor: "transparent",
             }}
           >
-            <Feather name="trash-2" size={24} color={theme.danger} />
+            <Feather name="trash-2" size={24} color={theme.red[400]} />
           </Button>
         </View>
       </View>
@@ -122,8 +123,8 @@ function PasswordDetailsSheet(props: SheetProps<"PasswordDetails-sheet">) {
             marginTop: 20,
           }}
         >
-          <Text style={{ fontSize: 18, color: theme.dark }}>Senha</Text>
-          <Text style={{ color: theme.secondary, fontSize: 18 }}>
+          <Text style={{ fontSize: 18, color: theme.gray[900] }}>Senha</Text>
+          <Text style={{ color: theme.gray[500], fontSize: 18 }}>
             {renderLimitChars(props?.payload?.password?.password!)}
           </Text>
         </View>
@@ -139,12 +140,28 @@ function PasswordDetailsSheet(props: SheetProps<"PasswordDetails-sheet">) {
             marginTop: 18,
           }}
         >
-          <Text style={{ fontSize: 18, color: theme.dark }}>Usuário</Text>
-          <Text style={{ color: theme.secondary, fontSize: 18 }}>
+          <Text style={{ fontSize: 18, color: theme.gray[900] }}>Usuário</Text>
+          <Text style={{ color: theme.gray[500], fontSize: 18 }}>
             {props?.payload?.password?.passwordUser
               ? renderLimitChars(props?.payload?.password?.passwordUser)
               : "-"}
           </Text>
+        </View>
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            width: "100%",
+            paddingHorizontal: 22,
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginTop: 18,
+          }}
+        >
+          <Text style={{ fontSize: 18, color: theme.gray[900] }}>
+            Intensidade
+          </Text>
+          <PasswordStrength password={props.payload?.password.password!} />
         </View>
       </View>
     </ActionSheet>

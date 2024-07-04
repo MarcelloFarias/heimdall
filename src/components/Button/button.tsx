@@ -17,7 +17,7 @@ function Button(props: ButtonProps) {
     alignItems: props?.style?.alignItems || "center",
     justifyContent: props?.style?.justifyContent || "center",
     backgroundColor:
-      props?.style?.backgroundColor || props?.bg || theme.primary,
+      props?.style?.backgroundColor || props?.bg || theme.blue[400],
     height: props?.style?.height || 42,
     borderRadius: props?.style?.borderRadius || 4,
   });
@@ -33,7 +33,9 @@ function Button(props: ButtonProps) {
       {props?.children ? (
         props?.children
       ) : (
-        <Text style={{ fontSize: 18, color: theme.light }}>{props?.text}</Text>
+        <Text style={{ fontSize: 18, color: theme.gray[50] }}>
+          {props?.text}
+        </Text>
       )}
     </Pressable>
   );

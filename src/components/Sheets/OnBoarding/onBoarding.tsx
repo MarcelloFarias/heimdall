@@ -19,10 +19,10 @@ function OnBoarding() {
           marginTop: 20,
         }}
       >
-        <Text style={{ fontSize: 20, color: theme.dark }}>
+        <Text style={{ fontSize: 20, color: theme.gray[900] }}>
           Boas vindas ao Heimdall !
         </Text>
-        <Text style={{ fontSize: 16, marginTop: 5, color: theme.secondary }}>
+        <Text style={{ fontSize: 16, marginTop: 5, color: theme.gray[500] }}>
           O melhor lugar para guardar suas senhas.
         </Text>
         <Image

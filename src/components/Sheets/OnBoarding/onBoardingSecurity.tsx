@@ -19,7 +19,7 @@ function OnBoardingSecurity() {
           marginTop: 20,
         }}
       >
-        <Text style={{ fontSize: 20, color: theme.dark }}>
+        <Text style={{ fontSize: 20, color: theme.gray[900] }}>
           Leve, seguro e prático
         </Text>
         <Text
@@ -27,7 +27,7 @@ function OnBoardingSecurity() {
             fontSize: 16,
             marginTop: 10,
             paddingHorizontal: 5,
-            color: theme.secondary,
+            color: theme.gray[500],
           }}
         >
           Suas senhas ficam armazenadas localmente, isso significa que elas

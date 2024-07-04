@@ -28,7 +28,7 @@ function App() {
             <FloatButton
               onPress={() => SheetManager.show("RegisterPassword-sheet")}
             >
-              <AntDesign name="pluscircle" size={58} color={theme.primary} />
+              <AntDesign name="pluscircle" size={58} color={theme.blue[400]} />
             </FloatButton>
             <Toast />
           </SafeAreaView>

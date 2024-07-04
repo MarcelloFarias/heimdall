@@ -19,7 +19,7 @@ function Input(props: InputProps) {
     padding: props?.style?.padding || 8,
     borderWidth: props?.style?.borderWidth || 1,
     borderRadius: props?.style?.borderRadius || 4,
-    borderColor: props?.style?.borderColor || theme.dark,
+    borderColor: props?.style?.borderColor || theme.gray[900],
     height: props?.style?.height || 42,
     marginTop: 0,
   };
@@ -32,7 +32,7 @@ function Input(props: InputProps) {
         marginTop: props?.style?.marginTop || 0,
       }}
     >
-      <Text style={{ marginBottom: 5, color: theme.secondary }}>
+      <Text style={{ marginBottom: 5, color: theme.gray[500] }}>
         {props?.label}
       </Text>
       <View style={{ display: "flex", flexDirection: "row" }}>

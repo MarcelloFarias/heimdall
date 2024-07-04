@@ -14,9 +14,11 @@ function Header() {
         flexDirection: "row",
       }}
     >
-      <Text style={{ fontSize: 28, color: theme.dark }}>Minhas Senhas</Text>
+      <Text style={{ fontSize: 28, color: theme.gray[900] }}>
+        Minhas Senhas
+      </Text>
       <Pressable onPress={() => {}}>
-        <Ionicons name="settings-sharp" size={28} color={theme.dark} />
+        <Ionicons name="settings-sharp" size={28} color={theme.gray[900]} />
       </Pressable>
     </View>
   );

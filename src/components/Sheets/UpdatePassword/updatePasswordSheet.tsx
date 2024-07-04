@@ -91,8 +91,8 @@ function UpdatePasswordSheet(props: SheetProps<"UpdatePassword-sheet">) {
           justifyContent: "center",
         }}
       >
-        <Text style={{ margin: 26, fontSize: 20, color: theme.dark }}>
-          <AntDesign name="lock" size={20} color={theme.dark} /> Editar uma
+        <Text style={{ margin: 26, fontSize: 20, color: theme.gray[900] }}>
+          <AntDesign name="lock" size={20} color={theme.gray[900]} /> Editar uma
           senha
         </Text>
 
@@ -131,7 +131,7 @@ function UpdatePasswordSheet(props: SheetProps<"UpdatePassword-sheet">) {
             >
               <MaterialCommunityIcons
                 name={isPasswordVisible ? "eye-off-outline" : "eye-outline"}
-                color={isPasswordVisible ? theme.secondary : theme.dark}
+                color={isPasswordVisible ? theme.gray[500] : theme.gray[900]}
                 size={22}
               />
             </Button>
@@ -152,16 +152,16 @@ function UpdatePasswordSheet(props: SheetProps<"UpdatePassword-sheet">) {
 
         <Button
           onPress={() => updatePassword()}
-          style={{ marginTop: 20, backgroundColor: theme.success }}
+          style={{ marginTop: 20, backgroundColor: theme.green[400] }}
         >
-          <Text style={{ fontSize: 16, color: theme.light }}>Salvar</Text>
+          <Text style={{ fontSize: 16, color: theme.gray[50] }}>Salvar</Text>
         </Button>
 
         <Button
           style={{ marginTop: 20, backgroundColor: "transparent" }}
           onPress={() => SheetManager.hide("UpdatePassword-sheet")}
         >
-          <Text style={{ color: theme.secondary, fontSize: 16 }}>Cancelar</Text>
+          <Text style={{ color: theme.gray[500], fontSize: 16 }}>Cancelar</Text>
         </Button>
       </View>
     </ActionSheet>
