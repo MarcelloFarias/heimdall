@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { SafeAreaView } from "react-native";
 import { SheetManager, SheetProvider } from "react-native-actions-sheet";
 import "./src/components/Sheets/sheets";
@@ -9,8 +9,6 @@ import Header from "./src/components/Header/header";
 import PasswordsList from "./src/components/PasswordsList/passwordsList";
 import Toast from "react-native-toast-message";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Password } from "./src/interfaces/password";
 import PasswordsProvider from "./src/hooks/usePasswords";
 
 function App() {

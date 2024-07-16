@@ -48,7 +48,7 @@ function UpdatePasswordSheet(props: SheetProps<"UpdatePassword-sheet">) {
         keys.forEach(async (key: string) => {
           const password = await AsyncStorage.getItem(key);
 
-          if (password !== null) {
+          if (password !== null && key !== "@configs") {
             setPasswords((prevPasswords: any) => [
               ...prevPasswords,
               JSON.parse(password),

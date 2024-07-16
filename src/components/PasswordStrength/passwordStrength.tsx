@@ -21,7 +21,7 @@ function PasswordStrength(props: IPasswordStrengthProps) {
   function measurePassword() {
     if (conditionsSatisfied < 3) {
       return theme.red[100];
-    } else if (conditionsSatisfied === 3) {
+    } else if (conditionsSatisfied <= 4) {
       return theme.yellow[200];
     } else {
       return theme.green[300];
