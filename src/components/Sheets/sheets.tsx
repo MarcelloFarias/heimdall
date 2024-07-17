@@ -3,14 +3,16 @@ import OnBoarding from "./OnBoarding/onBoarding";
 import RegisterPasswordSheet from "./RegisterPassword/registerPassword";
 import PasswordDetailsSheet from "./PasswordDetails/passwordDetailsSheet";
 import UpdatePasswordSheet from "./UpdatePassword/updatePasswordSheet";
-import ConfifurePassword from "./ConfigurePassword/configurePasswordSheet";
+import ConfigurePassword from "./ConfigurePassword/configurePasswordSheet";
+import Biometry from "./Biometry/biometrySheet";
 import { Password } from "../../interfaces/password";
 
 registerSheet("OnBoarding-sheet", OnBoarding);
 registerSheet("RegisterPassword-sheet", RegisterPasswordSheet);
 registerSheet("PasswordDetails-sheet", PasswordDetailsSheet);
 registerSheet("UpdatePassword-sheet", UpdatePasswordSheet);
-registerSheet("ConfigurePassword-sheet", ConfifurePassword);
+registerSheet("ConfigurePassword-sheet", ConfigurePassword);
+registerSheet("Biometry-sheet", Biometry);
 
 declare module "react-native-actions-sheet" {
   interface Sheets {

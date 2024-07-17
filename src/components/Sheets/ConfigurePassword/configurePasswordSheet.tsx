@@ -8,6 +8,7 @@ import Input from "../../Input/input";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Toast from "react-native-toast-message";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as LocalAuthentication from "expo-local-authentication";
 
 function ConfigurePassword() {
   const { height } = useWindowDimensions();
@@ -27,6 +28,20 @@ function ConfigurePassword() {
     setIsConfirmPasswordVisible(!isConfirmPasswordVisible);
   };
 
+  async function verifyBiometry() {
+    await LocalAuthentication.hasHardwareAsync().then(async (response: any) => {
+      if (response) {
+        if (await LocalAuthentication.isEnrolledAsync()) {
+          SheetManager.show("Biometry-sheet");
+          return;
+        }
+
+        SheetManager.hide("OnBoarding-sheet");
+        SheetManager.hide("ConfigurePassword-sheet");
+      }
+    });
+  }
+
   async function RegisterAccessPassword() {
     if (accessPassword && confirmAccessPassword) {
       if (accessPassword !== confirmAccessPassword) {
@@ -43,8 +58,7 @@ function ConfigurePassword() {
         })
       );
 
-      SheetManager.hide("OnBoarding-sheet");
-      SheetManager.hide("ConfigurePassword-sheet");
+      verifyBiometry();
 
       setMessage("");
       return Toast.show({
@@ -68,8 +82,7 @@ function ConfigurePassword() {
       })
     );
 
-    SheetManager.hide("OnBoarding-sheet");
-    SheetManager.hide("ConfigurePassword-sheet");
+    verifyBiometry();
   }
 
   return (
@@ -172,7 +185,7 @@ function ConfigurePassword() {
 
         <Button
           onPress={() => RegisterAccessPassword()}
-          text="Prosseguir"
+          text="Salvar"
           style={{ marginTop: 24 }}
         ></Button>
 

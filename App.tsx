@@ -10,9 +10,23 @@ import PasswordsList from "./src/components/PasswordsList/passwordsList";
 import Toast from "react-native-toast-message";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import PasswordsProvider from "./src/hooks/usePasswords";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function App() {
+  const verifyOnBoardingSheet = async () => {
+    const configs = await AsyncStorage.getItem("@configs");
+
+    if (configs !== null) {
+      const configsObj = JSON.parse(configs);
+
+      if (configsObj?.firstTimeOnboarding) {
+        SheetManager.show("OnBoarding-sheet");
+      }
+    }
+  };
+
   useEffect(() => {
+    // verifyOnBoardingSheet();
     SheetManager.show("OnBoarding-sheet");
   }, []);
 

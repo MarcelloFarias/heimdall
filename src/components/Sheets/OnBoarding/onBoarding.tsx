@@ -4,23 +4,9 @@ const onBoardImage = require("../../../../assets/onBoarding.png");
 import Button from "../../Button/button";
 import theme from "../../../../Theme";
 import { useWindowDimensions } from "react-native";
-import * as LocalAuthentication from "expo-local-authentication";
 
 function OnBoarding() {
   const { height } = useWindowDimensions();
-
-  async function verifyBiometry() {
-    await LocalAuthentication.hasHardwareAsync().then(async (response: any) => {
-      if (response) {
-        if (await LocalAuthentication.isEnrolledAsync()) {
-          SheetManager.show("ConfigurePassword-sheet");
-          return;
-        }
-
-        SheetManager.hide("OnBoarding-sheet");
-      }
-    });
-  }
 
   return (
     <ActionSheet
@@ -59,7 +45,7 @@ function OnBoarding() {
           dispositivo.
         </Text>
         <Button
-          onPress={() => verifyBiometry()}
+          onPress={() => SheetManager.show("ConfigurePassword-sheet")}
           text="Prosseguir"
           style={{ marginTop: 24 }}
         ></Button>
