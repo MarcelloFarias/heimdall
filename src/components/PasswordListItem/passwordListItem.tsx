@@ -19,7 +19,10 @@ import { Password } from "../../interfaces/password";
 import { SheetManager } from "react-native-actions-sheet";
 import * as Clipboard from "expo-clipboard";
 import { usePasswords } from "../../hooks/usePasswords";
-import { renderLimitChars } from "../../functions/funcitons";
+import {
+  openConfirmationPasswordSheet,
+  renderLimitChars,
+} from "../../functions/funcitons";
 import PasswordStrength from "../PasswordStrength/passwordStrength";
 
 interface PasswordListItemProps {
@@ -153,7 +156,7 @@ function PasswordListItem(props: PasswordListItemProps) {
               opacity: pressed ? 0.5 : 1,
             },
           ]}
-          onPress={deletePassword}
+          onPress={() => openConfirmationPasswordSheet(deletePassword)}
         >
           <Feather name="trash-2" size={24} color={theme.gray[50]} />
         </Pressable>

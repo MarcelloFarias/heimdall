@@ -11,6 +11,7 @@ import { usePasswords } from "../../../hooks/usePasswords";
 import { Feather } from "@expo/vector-icons";
 import { renderLimitChars } from "../../../functions/funcitons";
 import PasswordStrength from "../../PasswordStrength/passwordStrength";
+import { openConfirmationPasswordSheet } from "../../../functions/funcitons";
 
 function PasswordDetailsSheet(props: SheetProps<"PasswordDetails-sheet">) {
   const { passwords, setPasswords } = usePasswords();
@@ -99,7 +100,7 @@ function PasswordDetailsSheet(props: SheetProps<"PasswordDetails-sheet">) {
           </Button>
 
           <Button
-            onPress={deletePassword}
+            onPress={() => openConfirmationPasswordSheet(deletePassword)}
             style={{
               width: 50,
               marginLeft: 10,

@@ -5,6 +5,7 @@ import PasswordDetailsSheet from "./PasswordDetails/passwordDetailsSheet";
 import UpdatePasswordSheet from "./UpdatePassword/updatePasswordSheet";
 import ConfigurePassword from "./ConfigurePassword/configurePasswordSheet";
 import Biometry from "./Biometry/biometrySheet";
+import ConfirmPassword from "./ConfirmPassword/confirmPasswordSheet";
 import { Password } from "../../interfaces/password";
 
 registerSheet("OnBoarding-sheet", OnBoarding);
@@ -13,6 +14,7 @@ registerSheet("PasswordDetails-sheet", PasswordDetailsSheet);
 registerSheet("UpdatePassword-sheet", UpdatePasswordSheet);
 registerSheet("ConfigurePassword-sheet", ConfigurePassword);
 registerSheet("Biometry-sheet", Biometry);
+registerSheet("ConfirmPassword-sheet", ConfirmPassword);
 
 declare module "react-native-actions-sheet" {
   interface Sheets {
@@ -25,6 +27,12 @@ declare module "react-native-actions-sheet" {
     "UpdatePassword-sheet": SheetDefinition<{
       payload: {
         password: Password;
+      };
+    }>;
+
+    "ConfirmPassword-sheet": SheetDefinition<{
+      payload: {
+        onConfirm: () => void;
       };
     }>;
   }
