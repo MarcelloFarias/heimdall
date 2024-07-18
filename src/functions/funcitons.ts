@@ -26,16 +26,44 @@ export async function openConfirmationPasswordSheet(onConfirm: () => void) {
         onConfirm();
         return;
       }
+
+      if (!authenticated.success) {
+        if (configsObj?.accessPassword !== "") {
+          Toast.show({
+            type: "error",
+            text1: "Falha ao realizar leitura biométrica",
+            text2: "Tente utilizar sua senha de acesso",
+          });
+
+          SheetManager.show("ConfirmPassword-sheet", {
+            payload: {
+              onConfirm: () => onConfirm(),
+            },
+          });
+
+          return;
+        }
+
+        Toast.show({
+          type: "error",
+          text1: "Falha ao realizar leitura biométrica",
+          text2: "Por favor, tente novamente",
+        });
+
+        return;
+      }
     }
 
-    if (configsObj?.accessPassword !== "") {
-      SheetManager.show("ConfirmPassword-sheet", {
-        payload: {
-          onConfirm: () => onConfirm(),
-        },
-      });
+    if (!configsObj?.allowBiometry) {
+      if (configsObj?.accessPassword !== "") {
+        SheetManager.show("ConfirmPassword-sheet", {
+          payload: {
+            onConfirm: () => onConfirm(),
+          },
+        });
 
-      return;
+        return;
+      }
     }
 
     onConfirm();
