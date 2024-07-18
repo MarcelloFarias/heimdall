@@ -13,6 +13,7 @@ import Toast from "react-native-toast-message";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { PasswordRegistration } from "../../../interfaces/password";
 import { usePasswords } from "../../../hooks/usePasswords";
+import { openConfirmationPasswordSheet } from "../../../functions/funcitons";
 
 function RegisterPasswordSheet() {
   const { setPasswords } = usePasswords();
@@ -143,7 +144,7 @@ function RegisterPasswordSheet() {
         />
 
         <Button
-          onPress={() => savePassword()}
+          onPress={() => openConfirmationPasswordSheet(savePassword)}
           style={{ marginTop: 20, backgroundColor: theme.green[400] }}
         >
           <Text style={{ fontSize: 16, color: theme.gray[50] }}>Salvar</Text>

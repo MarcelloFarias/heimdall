@@ -166,13 +166,13 @@ function PasswordListItem(props: PasswordListItemProps) {
 
   return (
     <Pressable
-      onPress={() =>
+      onPress={() => {
         SheetManager.show("PasswordDetails-sheet", {
           payload: {
             password: props?.password,
           },
-        })
-      }
+        });
+      }}
     >
       <Swipeable renderRightActions={renderRightActions}>
         <View
@@ -231,7 +231,7 @@ function PasswordListItem(props: PasswordListItemProps) {
             </Button>
 
             <Button
-              onPress={copyToClipboard}
+              onPress={() => openConfirmationPasswordSheet(copyToClipboard)}
               style={{ width: 42, backgroundColor: "transparent" }}
             >
               {isCopied ? (

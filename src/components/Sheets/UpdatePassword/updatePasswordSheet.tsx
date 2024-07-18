@@ -10,6 +10,7 @@ import { Text, View } from "react-native";
 import Input from "../../Input/input";
 import theme from "../../../../Theme";
 import { usePasswords } from "../../../hooks/usePasswords";
+import { openConfirmationPasswordSheet } from "../../../functions/funcitons";
 
 function UpdatePasswordSheet(props: SheetProps<"UpdatePassword-sheet">) {
   const { setPasswords } = usePasswords();
@@ -151,7 +152,7 @@ function UpdatePasswordSheet(props: SheetProps<"UpdatePassword-sheet">) {
         />
 
         <Button
-          onPress={() => updatePassword()}
+          onPress={() => openConfirmationPasswordSheet(updatePassword)}
           style={{ marginTop: 20, backgroundColor: theme.green[400] }}
         >
           <Text style={{ fontSize: 16, color: theme.gray[50] }}>Salvar</Text>
