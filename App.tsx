@@ -13,21 +13,20 @@ import PasswordsProvider from "./src/hooks/usePasswords";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function App() {
-  // const verifyOnBoardingSheet = async () => {
-  //   const configs = await AsyncStorage.getItem("@configs");
+  const verifyOnBoardingSheet = async () => {
+    const configs = await AsyncStorage.getItem("@configs");
 
-  //   if (configs !== null) {
-  //     const configsObj = JSON.parse(configs);
+    if (configs !== null) {
+      const configsObj = JSON.parse(configs);
 
-  //     if (configsObj?.firstTimeOnboarding) {
-  //       SheetManager.show("OnBoarding-sheet");
-  //     }
-  //   }
-  // };
+      if (configsObj?.firstTimeOnboarding) {
+        SheetManager.show("OnBoarding-sheet");
+      }
+    }
+  };
 
   useEffect(() => {
-    // verifyOnBoardingSheet();
-    SheetManager.show("OnBoarding-sheet");
+    verifyOnBoardingSheet();
   }, []);
 
   return (
