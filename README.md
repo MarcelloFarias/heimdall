@@ -6,6 +6,7 @@ O app Heimdall é um gerenciador de senhas prático e leve construído utilizand
 a idéia principal do projeto é que se utilize do localStorage para que as senhas do usuário sejam armazenadas em seu próprio dispositivo.
 
 # Telas 📱
+<img src="https://github.com/user-attachments/assets/4a3b73d6-aa5b-4e25-bc97-f2405f7ae427" width="100" />
 [Imagem do WhatsApp de 2024-07-18 à(s) 21 47 48_65f10cdd](https://github.com/user-attachments/assets/4a3b73d6-aa5b-4e25-bc97-f2405f7ae427)
 ![Imagem do WhatsApp de 2024-07-18 à(s) 21 47 50_cdb58316](https://github.com/user-attachments/assets/9a622531-b84e-44a4-a81e-2cfdb8ce1c80)
 ![Imagem do WhatsApp de 2024-07-18 à(s) 21 47 50_ca31d555](https://github.com/user-attachments/assets/ef283ae3-56f2-462c-9da9-c5e763940d57)
