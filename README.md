@@ -22,8 +22,6 @@ a idéia principal do projeto é que se utilize do localStorage para que as senh
 ![Expo](https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37)
 
 # 🔨 Funcionalidades do projeto
-<br>
-
 - `Funcionalidade 1`: Registrar uma senha de acesso
 - `Funcionalidade 2`: Realizar leitura biométrica
 - `Funcionalidade 3`: Registrar uma senha
