@@ -15,6 +15,9 @@ a idéia principal do projeto é que se utilize do localStorage para que as senh
 <img src="https://github.com/user-attachments/assets/e0479d4e-06e5-4627-9937-48f27218eb11" width="200" />
 <img src="https://github.com/user-attachments/assets/f3ee4b65-ee9f-49b5-9061-c499386319bb" width="200" />
 <img src="https://github.com/user-attachments/assets/5a2b0d51-8c54-45b9-aa75-c4c2d48bf704" width="200" />
+<img src="https://github.com/user-attachments/assets/369823c5-1c43-44c8-893c-41971fe9e823" width="200" />
+<img src="https://github.com/user-attachments/assets/4c3fbfdb-461a-4dcf-8c16-4a9e23ebee09" width="200" />
+
 
 # 👨‍💻 Tecnologias utilizadas no projeto
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
@@ -27,7 +30,8 @@ a idéia principal do projeto é que se utilize do localStorage para que as senh
 - `Funcionalidade 3`: Registrar uma senha
 - `Funcionalidade 4`: Editar uma senha
 - `Funcionalidade 5`: Excluir uma senha
-- `Funcionalidade 6`: Copiar senha para área de transferência 
+- `Funcionalidade 6`: Copiar senha para área de transferência
+- `Funcionalidade 7`: Alterar senha de acesso
 
 # 📜 Licença
 
