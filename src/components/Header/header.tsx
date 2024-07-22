@@ -2,6 +2,7 @@ import { View, Text, Pressable, Platform } from "react-native";
 import theme from "../../../Theme";
 import { Ionicons } from "@expo/vector-icons";
 import { SheetManager } from "react-native-actions-sheet";
+import Button from "../Button/button";
 
 function Header() {
   return (
@@ -18,6 +19,16 @@ function Header() {
       <Text style={{ fontSize: 28, color: theme.gray[900] }}>
         Minhas Senhas
       </Text>
+
+      <Button
+        onPress={() => SheetManager.show("ChangeAccessPassword-sheet")}
+        style={{
+          backgroundColor: "transparent",
+          width: 64,
+        }}
+      >
+        <Ionicons name="settings-outline" size={24} />
+      </Button>
     </View>
   );
 }

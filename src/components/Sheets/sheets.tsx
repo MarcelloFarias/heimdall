@@ -6,6 +6,7 @@ import UpdatePasswordSheet from "./UpdatePassword/updatePasswordSheet";
 import ConfigurePassword from "./ConfigurePassword/configurePasswordSheet";
 import Biometry from "./Biometry/biometrySheet";
 import ConfirmPassword from "./ConfirmPassword/confirmPasswordSheet";
+import ChangeAccessPassword from "./ChangeAccessPassword/ChangeAccessPasswordSheet";
 import { Password } from "../../interfaces/password";
 
 registerSheet("OnBoarding-sheet", OnBoarding);
@@ -15,6 +16,7 @@ registerSheet("UpdatePassword-sheet", UpdatePasswordSheet);
 registerSheet("ConfigurePassword-sheet", ConfigurePassword);
 registerSheet("Biometry-sheet", Biometry);
 registerSheet("ConfirmPassword-sheet", ConfirmPassword);
+registerSheet("ChangeAccessPassword-sheet", ChangeAccessPassword);
 
 declare module "react-native-actions-sheet" {
   interface Sheets {
